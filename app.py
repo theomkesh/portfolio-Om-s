@@ -32,9 +32,9 @@ DB_PASSWORD = os.environ['DB_PASSWORD']
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/mydatabase'
 
 # Define routes
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return 'Hello, World!'
+    return 'Form Submitted !!!'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
