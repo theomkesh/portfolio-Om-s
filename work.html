@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="recv.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our work </title>
+</head>
+<body>
+    <div class="pg">
+
+
+        <nav>
+            <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">My Journey</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="work.html"> Work</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-container-2">
+            <input type="text" id="search-bar" placeholder="Search...">
+            <div id="suggestions" class="suggestions">
+                <a id="s1" href="index.html">Home</a>
+                <a id="s2" href="blog.html">My Journey</a>
+                <a id="s3" href="about.html">About</a>
+                <a id="s4" href="contact.html"> Contact</a>
+            </div>
+        </div>
+
+      <h1 id="wrkhd">Our Work</h1>
+    
+        <div class="card">V-I</div>
+
+        <div class="namelink">Our Biggest project ever launching soon <br>
+            <h1 id="V-I">Vronix Innovation</h1>
+           <a href="v-i.html"><button class="VI-btn">Tap Here To Know More</button></a> 
+        </div>
+
+    </div>   
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page URL path
+    var currentPage = window.location.pathname;
+
+    // Get all the nav links
+    var navLinks = document.querySelectorAll(".navbar li a");
+
+    // Loop through the links
+    navLinks.forEach(function(link) {
+        // Create a URL object to compare paths correctly
+        var linkPath = new URL(link.href).pathname;
+
+        // If the paths match, add the active class
+        if (currentPage === linkPath) {
+            link.classList.add("active");
+        }
+    });
+});
+
+
+
+
+// search bar (mobile view)
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const suggestions = document.getElementById('suggestions');
+
+    searchBar.addEventListener('focus', () => {
+        suggestions.style.display = 'block';
+    });
+
+    // Optional: Hide suggestions when clicking outside the search bar
+    document.addEventListener('click', (event) => {
+        if (!searchBar.contains(event.target) && !suggestions.contains(event.target)) {
+            suggestions.style.display = 'none';
+        }
+    });
+});
+    </script>    
+</body>
+</html>

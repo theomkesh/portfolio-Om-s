@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="recv.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+</head>
+<body>
+    <div class="pg">
+
+
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">My Journey</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="work.html"> Work</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="search-container-2">
+            <input type="text" id="search-bar" placeholder="Search...">
+            <div id="suggestions" class="suggestions">
+                <a id="s1" href="index.html">Home</a>
+                <a id="s2" href="blog.html">My Journey</a>
+                <a id="s3" href="contact.html">Contact</a>
+                <a id="s4" href="work.html">My Work</a>
+            </div>
+        </div>
+    
+
+        <div class="abphoto">
+            <img id="img2" src="about pg pic.jpg">
+        </div>
+
+        <div class="infoab">
+
+        <h2 id="h1abpg">About Me</h2>
+
+        <p id="p1abpg">
+            Hello! My name is Om Dhamangaonkar, and I am currently pursuing a degree in computer engineering. Alongside my studies, I have completed full stack developer course and right now I'm working as a freelancer, which allows me to apply my knowledge and skills in both frontend and backend development. I am also gaining valuable hands-on experience as an intern, where I have the opportunity to work on real-world projects and collaborate with experienced professionals in the industry. My passion for technology drives me to constantly learn and stay updated with the latest advancements in the field. In my free time, I enjoy exploring new programming languages and frameworks, contributing to open-source projects, and participating in coding challenges. I am excited about the future and look forward to making meaningful contributions to the tech community.
+        </p>
+
+        </div>
+
+        <div class="iconsabpg">
+            <a href="https://www.facebook.com/om.dhamangoakar"  title="facebook"> 
+                <i class="fa-brands fa-facebook" style="color: #00fffd;"></i>
+              </a>
+              <a href="https://x.com/ODhamangaonkar" title="twitter"> 
+                <i class="fa-brands fa-square-x-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/the_omkesh_/" title="instagram">  
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/om-dhamangaonkar-25649a217/" title="linkedin">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+        </div>
+
+        
+    </div>   
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page URL path
+    var currentPage = window.location.pathname;
+
+    // Get all the nav links
+    var navLinks = document.querySelectorAll(".navbar li a");
+
+    // Loop through the links
+    navLinks.forEach(function(link) {
+        // Create a URL object to compare paths correctly
+        var linkPath = new URL(link.href).pathname;
+
+        // If the paths match, add the active class
+        if (currentPage === linkPath) {
+            link.classList.add("active");
+        }
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const suggestions = document.getElementById('suggestions');
+
+    searchBar.addEventListener('focus', () => {
+        suggestions.style.display = 'block';
+    });
+
+    // Optional: Hide suggestions when clicking outside the search bar
+    document.addEventListener('click', (event) => {
+        if (!searchBar.contains(event.target) && !suggestions.contains(event.target)) {
+            suggestions.style.display = 'none';
+        }
+    });
+});
+
+
+
+//ANIMATIONS--------------------
+
+document.addEventListener("DOMContentLoaded", function() {
+        const textElement = document.getElementById("p1abpg");
+        const text = textElement.innerText;
+        textElement.innerText = ''; // Clear initial text
+
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                textElement.innerText += text[index];
+                index++;
+                setTimeout(type, 10); // Adjust speed by changing the timeout duration (50ms here)
+            } else {
+                // Remove the blinking cursor when done
+                textElement.style.borderRight = 'none';
+            }
+        }
+
+        setTimeout(type, 1000); // Initial delay before starting the typing
+    });
+
+    </script>    
+</body>
+</html>

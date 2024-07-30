@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="recv.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us </title>
+</head>
+<body>
+    <div class="pg">
+
+
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">My Journey</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="work.html"> Work</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-container-2">
+            <input type="text" id="search-bar" placeholder="Search...">
+            <div id="suggestions" class="suggestions">
+                <a id="s1" href="index.html">Home</a>
+                <a id="s2" href="blog.html">My Journey</a>
+                <a id="s3" href="about.html">About Me</a>
+                <a id="s4" href="work.html"> Work</a>
+            </div>
+        </div>
+
+        <h1 id="cnthd">Contact Page</h1>
+
+
+        <div class="wrapper">
+            <div class="box">
+              <h1 id="contact-info">Contact Me !!!</h1>
+              <p id="p2">
+                <b>Mobile Number</b> - +91 9834383522 <br>
+                <b>E-Mail</b> - vronixinnovation715@gmail.com <br>
+                <b>Address</b> - Unknown (Will be updated soon)
+              </p>
+            </div>
+          </div>
+          
+
+       
+       
+        <div class="search-container-contactpg"></div>
+     
+
+
+        <div class="contact-form">
+            <h2> Get In Touch </h2>
+            <form action="http://localhost:5000/submit" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="number" name="number" placeholder="Your Phone Number">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="icons-contact-pg">
+            <a href="https://www.facebook.com/om.dhamangoakar"  title="facebook"> 
+                <i class="fa-brands fa-facebook" style="color: #00fffd;"></i>
+              </a>
+              <a href="https://x.com/ODhamangaonkar" title="twitter"> 
+                <i class="fa-brands fa-square-x-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/the_omkesh_/" title="instagram">  
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/om-dhamangaonkar-25649a217/" title="linkedin">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+        </div>
+
+
+
+
+    </div>   
+
+    <script src="script.js"></script>
+    
+    <script>
+        //NAV-Bar Script
+
+        document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page URL path
+    var currentPage = window.location.pathname;
+
+    // Get all the nav links
+    var navLinks = document.querySelectorAll(".navbar li a");
+
+    // Loop through the links
+    navLinks.forEach(function(link) {
+        // Create a URL object to compare paths correctly
+        var linkPath = new URL(link.href).pathname;
+
+        // If the paths match, add the active class
+        if (currentPage === linkPath) {
+            link.classList.add("active");
+        }
+    });
+});
+
+
+
+
+
+// for contact form
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+            
+            fetch('send_mail.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('form-result').innerText = data;
+                document.getElementById('form-result').style.display = 'block';
+                form.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+
+
+
+       // search bar 
+
+       document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const suggestions = document.getElementById('suggestions');
+
+    searchBar.addEventListener('focus', () => {
+        suggestions.style.display = 'block';
+    });
+
+    // Optional: Hide suggestions when clicking outside the search bar
+    document.addEventListener('click', (event) => {
+        if (!searchBar.contains(event.target) && !suggestions.contains(event.target)) {
+            suggestions.style.display = 'none';
+        }
+    });
+});
+
+
+
+    </script>   
+</body>
+</html>

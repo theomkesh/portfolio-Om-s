@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="recv.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journey</title>
+</head>
+<body>
+    <div class="pg">
+
+
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">My Journey</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="work.html"> Work</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="search-container-2">
+            <input type="text" id="search-bar" placeholder="Search...">
+            <div id="suggestions" class="suggestions">
+                <a id="s1" href="index.html">Home</a>
+                <a id="s2" href="contact.html">Contact</a>
+                <a id="s3" href="about.html">About Me</a>
+                <a id="s4" href="work.html"> Work</a>
+            </div>
+        </div>
+
+
+        <h1 class="blog-pg">My Journey</h1>
+
+        <h4 class="academic-journey">Academic Me</h4>
+        <div class="journey">
+            <div class="edu">
+                School - <br>
+                I have completed my SSC boards from SACRED HEART CONVENT SCHOOL with 78.87 % <br>
+
+                High School - <br> 
+                I have completed my HSC boards having additional subject as <B style="color: #00ffff;"> COMPUTER SCIENCE</B> from GEETAMATA JR. COLLEGE OF SCIENCE with 67.67 % <br>
+
+                College - <br>
+                Right now I'm pursuing third year of <b style="color: #00ffff;"> COMPUTER ENGINEERING </b> undergraduate course in NBN SINHAGAD COLLEGE OF ENGINEERING 
+            </div>
+
+            <div class="wrexp">
+                <P id="knowledge-work">Since 12th grade, I've been passionate about coding. I started with C++, HTML, and CSS, and later explored web development and app building. While studying computer engineering, I learned JavaScript, PHP, Python, SQL, and frameworks like Bootstrap, AngularJS, and Tailwind CSS, completing my full stack developer course.</P>
+            </div>
+        </div>
+        
+
+        
+        <h4 class="skills-journey">My skills</h4>
+        <div class="skills">
+            <div class="coding">
+                <h1 id="FE">Front-end Coding - HTML, CSS, JS, BOOTSTRAP, TAILWIND CSS, ANGULAR JS</h1>
+                <div class="frontend">
+                    <div class="codinglang"></div>
+                </div>
+
+
+                <h1 id="BE">Back-end Coding - SQL, PYTHON, NODE JS, MONGO DB, PHP </h1>
+                <div class="backend">
+                    <div class="codinglang2"></div>
+                </div>
+            </div>
+
+
+
+
+            <div class="professional">
+                
+                <h1 id="M1">Microsoft 360</h1>
+                <div class="microsoft">
+                    <div class="micro360"></div>
+                </div>
+
+                <h1 id="P1">Problem Solving</h1>
+                <div class="problem">
+                    <div class="solving"></div>
+                </div>
+                
+                <h1 id="SP1">Presentating PPTs/PROJECTs </h1>
+                <div class="speaking">
+                    <div class="speak"></div>
+                </div>
+
+                <h1 id="PR1">Communication Skills</h1>
+                <div class="project">
+                    <div class="handling"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="iconsabpg">
+            <a href="https://www.facebook.com/om.dhamangoakar"  title="facebook"> 
+                <i class="fa-brands fa-facebook" style="color: #00fffd;"></i>
+              </a>
+              <a href="https://x.com/ODhamangaonkar" title="twitter"> 
+                <i class="fa-brands fa-square-x-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/the_omkesh_/" title="instagram">  
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/om-dhamangaonkar-25649a217/" title="linkedin">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+        </div>
+
+
+    
+    </div>   
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page URL path
+    var currentPage = window.location.pathname;
+
+    // Get all the nav links
+    var navLinks = document.querySelectorAll(".navbar li a");
+
+    // Loop through the links
+    navLinks.forEach(function(link) {
+        // Create a URL object to compare paths correctly
+        var linkPath = new URL(link.href).pathname;
+
+        // If the paths match, add the active class
+        if (currentPage === linkPath) {
+            link.classList.add("active");
+        }
+    });
+});
+
+
+
+// for mobile view search bar 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const suggestions = document.getElementById('suggestions');
+
+    searchBar.addEventListener('focus', () => {
+        suggestions.style.display = 'block';
+    });
+
+    // Optional: Hide suggestions when clicking outside the search bar
+    document.addEventListener('click', (event) => {
+        if (!searchBar.contains(event.target) && !suggestions.contains(event.target)) {
+            suggestions.style.display = 'none';
+        }
+    });
+});
+
+
+
+    </script>   
+</body>
+</html>
