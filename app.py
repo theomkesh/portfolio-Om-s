@@ -1,28 +1,46 @@
-from flask import Flask, request, jsonify
 import os
+from flask import Flask, request, jsonify
+from flask.logging import default_handler
 
-app = Flask(__name__)
+import logging
 
-# Ensure the data directory exists
-if not os.path.exists('data'):
-    os.makedirs('data')
+# Create a logger instance
+logger = logging.getLogger(__name__)
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    name = request.form['name']
-    number = request.form['number']
-    email = request.form['email']
-    message = request.form['message']
+# Set the log level
+logger.setLevel(logging.INFO)
 
-    # Save the data to a file
-    with open('data/contact_data.txt', 'a') as file:
-        file.write(f'Name: {name}\n')
-        file.write(f'Email: {email}\n')
-        file.write(f'Number: {number}\n')
-        file.write(f'Message: {message}\n')
-        file.write('---\n')
+# Create a file handler
+file_handler = logging.FileHandler('app.log')
 
-    return jsonify({"status": "success", "message": "Data saved successfully"}), 200
+# Add the file handler to the logger
+logger.addHandler(file_handler)
+
+app = Flask(__name__, static_folder='static', template_folder='templates')
+
+# Configure logging
+app.logger.removeHandler(default_handler)
+app.logger.addHandler(logging.FileHandler('app.log'))
+app.logger.setLevel(logging.INFO)
+
+# Use environment variables
+DB_HOST = os.environ['DB_HOST']
+DB_USER = os.environ['DB_USER']
+DB_PASSWORD = os.environ['DB_PASSWORD']
+
+# Connect to database
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/mydatabase'
+
+# Define routes
+@app.route('/')
+def index():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
